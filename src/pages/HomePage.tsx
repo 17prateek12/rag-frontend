@@ -21,7 +21,7 @@ const HomePage = () => {
         const raw = localStorage.getItem('chat_sessions');
         if (raw) {
             const parsed = JSON.parse(raw) as StoredSession[];
-            const valid = parsed.filter((s) => Date.now() - s.timestamp < 86400000);
+            const valid = parsed.filter((s) => Date.now() - s.timestamp < 86400000).sort((a,b)=>b.timestamp-a.timestamp);
             setSesssions(valid);
         }
     }, []);
